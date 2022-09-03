@@ -51,10 +51,10 @@ print('''
 print("Welcome to DUNGEON.")
 print("Your mission is to find the treasure.") 
 
-enter = input("Would you like to enter the dangeon or go back ? y or n ")
+enter = input("Would you like to enter the dangeon or go back ? \"y\" or \"n\" ")
 
 if  (enter.lower() == 'y' ):
-    go_to_room = int(input("You see two rooms in front of you which one to enter ? 1,2 " ))
+    go_to_room = int(input("You see two rooms in front of you which one to enter ? '1'or '2' " ))
     
     if go_to_room == 1:
         print("You won there it is the treasure")
