@@ -4,4 +4,3 @@ class Question:
         self.answer = answer
 
 
-q = Question("Welcome", "a")
