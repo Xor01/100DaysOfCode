@@ -20,11 +20,22 @@ screen.onkeypress(snake.down, "Down")
 screen.onkeypress(snake.right, "Right")
 screen.onkeypress(snake.left, "Left")
 
-while True:
+game_on = True
+
+while game_on:
     screen.update()
     sleep(0.1)
 
+    # Detect collision with the food
     snake.move_snake()
     if snake.snakes_list[0].distance(food) < 15:
         food.refresh()
         score.increase_score()
+
+    # Detect collision with the wall
+    if abs(snake.snakes_list[0].xcor()) > 280 or abs(snake.snakes_list[0].ycor()) > 280:
+        game_on = False
+        score.game_over()
+
+
+screen.exitonclick()
