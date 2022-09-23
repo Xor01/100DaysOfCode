@@ -4,7 +4,7 @@ SPEED = 0
 
 
 class Paddle(Turtle):
-    def __init__(self):
+    def __init__(self, cor):
         super().__init__()
         self.penup()
         self.shape("square")
@@ -12,10 +12,10 @@ class Paddle(Turtle):
         self.shapesize(1, 4, 0)
         self.setheading(90)
         self.speed(SPEED)
-        self.goto(240, 0)
+        self.goto(cor)
 
     def up(self):
-        self.forward(10)
+        self.forward(20)
 
     def down(self):
-        self.forward(-10)
+        self.forward(-20)
