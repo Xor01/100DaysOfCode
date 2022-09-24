@@ -13,7 +13,7 @@ class CarManager:
 
     def create_car(self):
         random_num = randint(1, 6)
-        if random_num == 2 or random_num == 6 :
+        if random_num == 2 or random_num == 6:
             car = Turtle(shape="square")
             car.penup()
             car.shapesize(1, 2, 0)
