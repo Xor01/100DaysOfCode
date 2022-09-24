@@ -24,3 +24,7 @@ while game_is_on:
     screen.update()
     car.create_car()
     car.move_cars()
+
+    if player.ycor() == 280:
+        score_board.update_level()
+        player.return_to_origin()
