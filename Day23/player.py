@@ -10,7 +10,7 @@ class Player(Turtle):
         self.shape("turtle")
         self.penup()
         self.setheading(90)
-        self.goto(STARTING_POSITION)
+        self.return_to_origin()
 
     def up(self):
         if self.ycor() < FINISH_LINE_Y:
@@ -18,3 +18,10 @@ class Player(Turtle):
 
     def return_to_origin(self):
         self.goto(STARTING_POSITION)
+
+    def is_at_finish_line(self):
+        if self.ycor() == FINISH_LINE_Y:
+
+            return True
+        else:
+            return False
