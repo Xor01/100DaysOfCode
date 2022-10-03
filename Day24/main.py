@@ -1,4 +1,4 @@
-# Mail Merge
+# Mail Merger
 
 PLACEHOLDER = "[name]"
 
