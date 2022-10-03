@@ -1,3 +1,4 @@
 Some text in a file
 to be read
 from python
+This text is from write method
