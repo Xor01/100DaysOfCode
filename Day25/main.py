@@ -17,19 +17,16 @@ states_list = states["state"].to_list()
 
 while user_score < 50:
     user_prompt = screen.textinput(f"Guess the state {user_score}/50", "Enter a new state name or \"Exit\" to exit: ")
-    user_prompt.title()
+    user_prompt = user_prompt.title()
 
     if user_prompt == "Exit":
-        states_to_learn = []
-        for state in states_list:
-            if state not in user_answers:
-                states_to_learn.append(state)
+        states_to_learn = [state for state in states_list if state not in user_answers]
 
         states_to_learn_csv = pandas.DataFrame(states_to_learn)
         states_to_learn_csv.to_csv("States To Learn.csv")
         break
 
-    if user_prompt in states_list and (user_prompt.title() not in user_answers):
+    if user_prompt in states_list and (user_prompt not in user_answers):
         tur = turtle.Turtle()
         tur.hideturtle()
         tur.penup()
