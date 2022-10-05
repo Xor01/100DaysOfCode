@@ -1,6 +1,6 @@
 import pandas
 
-data_file = pandas.read_csv("2018_Central_Park_Squirrel_Census_-_Squirrel_Data.csv")
+data_file = pandas.read_csv("2018_Squirrel_Data.csv")
 
 color_col = data_file["Primary Fur Color"]
 color_list = color_col.to_list()
