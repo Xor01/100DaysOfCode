@@ -86,7 +86,7 @@ start_button = Button(text="Start", fg="black", command=start_timer, highlightth
 start_button.grid(row=2, column=0)
 
 # Reset Button
-reset_button = Button(text="Reset", fg="black",highlightthickness=0, bg=YELLOW, command=reset_timer)
+reset_button = Button(text="Reset", fg="black", highlightthickness=0, bg=YELLOW, command=reset_timer)
 reset_button.grid(row=2, column=2)
 
 # Check marks
