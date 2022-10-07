@@ -36,13 +36,13 @@ canvas.create_image(100, 112, image=tomato_photo)
 canvas.create_text(100, 130, text="00:00", fill="white", font=(FONT_NAME, 24, "bold"))
 canvas.grid(row=2, column=2)
 
-# Start Label
-start_label = Label(text="Start", fg="black")
-start_label.grid(row=3, column=1)
+# Start Button
+start_button = Button(text="Start", fg="black",)
+start_button.grid(row=3, column=1)
 
-# Reset Label
-reset_label = Label(text="Reset", fg="black")
-reset_label.grid(row=3, column=3)
+# Reset Button
+reset_button = Button(text="Reset", fg="black")
+reset_button.grid(row=3, column=3)
 
 
 window.mainloop()
