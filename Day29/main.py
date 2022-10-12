@@ -8,7 +8,7 @@ import pyperclip
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
-def generate_passwrod():
+def generate_password():
     letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
                'v',
                'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q',
@@ -89,7 +89,7 @@ password_entry = Entry(width=21)
 password_entry.grid(row=3, column=1, sticky="EW")
 
 # Password Button
-password_button = Button(text="Generate Password", command=generate_passwrod)
+password_button = Button(text="Generate Password", command=generate_password)
 password_button.grid(row=3, column=2, sticky="EW")
 
 # Add Button
