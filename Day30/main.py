@@ -34,6 +34,27 @@ def generate_password():
     pyperclip.copy(password)
 
 
+# ---------------------------- SEARCH EMAIL ------------------------------- #
+
+def search_password():
+    try:
+        with open("password.json", "r") as search_file:
+            website_name = website_entry.get()
+            data = json.load(search_file)
+
+    except FileNotFoundError:
+        messagebox.showinfo(title="Error", message="PASSWORD FILE IS NOT FOUND")
+
+    else:
+        if website_name in data:
+            web_data = data[website_name]
+            email = web_data['email']
+            password = web_data['password']
+            messagebox.showinfo(title=website_name, message=f"Email: {email}\nPassword: {password}")
+        else:
+            messagebox.showinfo(title="Error", message=f"NO DETAILS ON \"{website_name}\"")
+
+
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def save_password():
     email = email_entry.get()
@@ -92,8 +113,8 @@ canvas.grid(row=0, column=1)
 # Website Component
 website_label = Label(text="Website:")
 website_label.grid(row=1, column=0)
-website_entry = Entry(width=35)
-website_entry.grid(row=1, column=1, columnspan=2, sticky="EW")
+website_entry = Entry(width=21)
+website_entry.grid(row=1, column=1, sticky="EW")
 website_entry.focus()
 
 # Email Component
@@ -113,6 +134,10 @@ password_entry.grid(row=3, column=1, sticky="EW")
 # Password Button
 password_button = Button(text="Generate Password", command=generate_password)
 password_button.grid(row=3, column=2, sticky="EW")
+
+# Search Button
+search_button = Button(text="Search", command=search_password)
+search_button.grid(row=1, column=2, sticky="EW")
 
 # Add Button
 add_button = Button(text="Add", width=36, command=save_password)
