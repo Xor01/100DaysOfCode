@@ -7,9 +7,9 @@ import random
 def send_motivational_quote(msg):
     with smtplib.SMTP("smtp.gmail.com") as connection:
         connection.starttls()
-        connection.login(user=email, password=password)
+        connection.login(user=EMAIL, password=PASSWORD)
         connection.sendmail(
-            from_addr=email,
+            from_addr=EMAIL,
             to_addrs="tomesoh800@dicopto.com",
             msg=f"Subject: Good Morning\n\n{msg}"
         )
