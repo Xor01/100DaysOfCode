@@ -10,7 +10,7 @@ import pandas
 
 # 1. Update the birthdays.csv :Done
 
-# 2. Check if today matches a birthday in the birthdays.csv
+# 2. Check if today matches a birthday in the birthdays.csv :Done
 def get_birthday():
     try:
         data = pandas.read_csv("birthdays.csv")
@@ -25,7 +25,7 @@ def get_birthday():
 
 
 # 3. If step 2 is true, pick a random letter from letter templates and replace the [NAME] with the person's actual
-# name from birthdays.csv
+# name from birthdays.csv :Done
 def pick_rand_template(name):
     template_num = random.randint(1, 3)
     try:
@@ -38,7 +38,7 @@ def pick_rand_template(name):
         print(f"Templates with name letter_templates/letter_{template_num}.txt was not found.")
 
 
-# 4. Send the letter generated in step 3 to that person's email address.
+# 4. Send the letter generated in step 3 to that person's email address. :Done
 def send_birthday_wish(msg):
     try:
         with smtplib.SMTP("smtp.gmail.com") as connection:
