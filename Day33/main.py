@@ -1,8 +1,20 @@
+# ISS overheard Notifier
 import requests
 from datetime import datetime
+from time import sleep
+import smtplib
+from SMTPInfo import *
+MY_LAT = 41.5707  # Your latitude
+MY_LONG = -152.5490  # Your longitude
 
-MY_LAT = 51.507351  # Your latitude
-MY_LONG = -0.127758  # Your longitude
+
+def is_iss_near_me():
+    return (MY_LAT - 5 <= iss_latitude <= MY_LAT + 5) and (MY_LONG - 5 <= iss_longitude <= MY_LONG + 5)
+
+
+def is_it_dark():
+    return my_hour >= sunset and my_hour >= sunrise
+
 
 iss_response = requests.get(url="http://api.open-notify.org/iss-now.json")
 iss_response.raise_for_status()
@@ -10,9 +22,6 @@ iss_data = iss_response.json()
 
 iss_latitude = float(iss_data["iss_position"]["latitude"])
 iss_longitude = float(iss_data["iss_position"]["longitude"])
-
-# Your position is within +5 or -5 degrees of the ISS position.
-
 
 parameters = {
     "lat": MY_LAT,
@@ -27,15 +36,23 @@ sunrise = int(sun_data["results"]["sunrise"].split("T")[1].split(":")[0])
 sunset = int(sun_data["results"]["sunset"].split("T")[1].split(":")[0])
 
 time_now = datetime.now()
+my_hour = time_now.hour
 
 
-# If the ISS is close to my current position,
-# and it is currently dark
-# Then email me to tell me to look up.
-# BONUS: run the code every 60 seconds.
+while True:
+    if is_iss_near_me() and is_it_dark():
+        try:
+            with smtplib.SMTP("smtp.gmail.com") as connection:
+                connection.starttls()
+                connection.login(user=EMAIL, password=PASSWORD)
+                connection.sendmail(
+                    from_addr=EMAIL,
+                    to_addrs="tomesoh800@dicopto.com",
+                    msg="Subject: Look UP\n\nISS Is above you."
+                )
+        except NameError:
+            print("Check Variables exit in SMTPInfo.py.")
 
-def is_iss_near_me():
-    if iss_latitude - MY_LAT > 0 and iss_latitude + MY_LAT < 5:
-        if iss_longitude - MY_LONG > 0 and iss_longitude + MY_LONG < 5:
-            return True
-    return False
+        except smtplib.SMTPAuthenticationError:
+            print("Authentication Error: check your credentials.")
+    sleep(60)
