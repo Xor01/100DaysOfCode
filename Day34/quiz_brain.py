@@ -17,7 +17,7 @@ class QuizBrain:
         q_text = html.unescape(self.current_question.text)
         self.question_number += 1
 
-        return f"{self.question_number} {q_text}"
+        return f"Q. {self.question_number} {q_text}"
 
         # user_answer = input(f"Q.{self.question_number}: {q_text} (True/False): ")
         # self.check_answer(user_answer)
@@ -30,5 +30,3 @@ class QuizBrain:
         else:
             return False
 
-        # print(f"Your current score is: {self.score}/{self.question_number}")
-        # print("\n")
