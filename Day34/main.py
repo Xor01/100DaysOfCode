@@ -1,6 +1,5 @@
 from question_model import Question
 from data import question_data
-from quiz_brain import QuizBrain
 from ui import *
 
 question_bank = []
@@ -13,4 +12,3 @@ for question in question_data:
 
 quiz = QuizBrain(question_bank)
 window = QuizInterface(quiz)
-
