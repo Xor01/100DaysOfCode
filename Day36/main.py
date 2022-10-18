@@ -34,8 +34,14 @@ yesterday_stock = days[0]
 before_yesterday_stock = days[1]
 difference = float(yesterday_stock["4. close"]) - float(before_yesterday_stock["4. close"])
 
-if (difference / float(yesterday_stock["4. close"])) * 100 > 5:
+if abs((difference / float(yesterday_stock["4. close"])) * 100) > 5:
     print("Get news")
+up_down = None
+
+if difference > 0:
+    up_down = "📈"
+else:
+    up_down = "📉"
 
 ## STEP 2: Use https://newsapi.org
 # Instead of printing ("Get News"), actually get the first 3 news pieces for the COMPANY_NAME. 
