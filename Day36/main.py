@@ -1,3 +1,4 @@
+# Stock Trading News Alert
 from twilio.rest import Client
 import requests
 import os
