@@ -2,6 +2,7 @@ import requests
 import os
 import smtplib
 
+
 class FlightSearch:
     # This class is responsible for talking to the Flight Search API.
     def __init__(self, fly_from, fly_to, date_from, date_to, price_to):
@@ -50,14 +51,6 @@ class FlightSearch:
             data.append(arrival_time[1])
             data.append(str(self.flight_info[0]["price"]))
 
-            # print("City From: " + self.flight_info[0]["cityFrom"] + " - " + self.flight_info[0]["countryFrom"]["name"])
-            # print("City To: " + self.flight_info[0]["cityTo"] + " - " + self.flight_info[0]["countryTo"]["name"])
-            #
-            # print("Utc Departure Time: " + departure_time[0] + " " + departure_time[1])
-            # print("Utc Arrival Time: " + arrival_time[0] + " " + arrival_time[1])
-            #
-            # print("Price: " + str(self.flight_info[0]["price"]) + " EUR")
-            # print("-------------------------------------------")
             try:
                 with smtplib.SMTP("smtp.gmail.com") as connection:
                     connection.starttls()
