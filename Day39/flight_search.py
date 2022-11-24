@@ -1,7 +1,6 @@
 import requests
 import os
-import datetime
-
+import smtplib
 
 class FlightSearch:
     # This class is responsible for talking to the Flight Search API.
@@ -25,6 +24,7 @@ class FlightSearch:
         self.search_flight()
 
     def search_flight(self):
+        data = []
         response = requests.get(url=self.END_POINT, params=self.parameters, headers=self.header)
         if "data" not in response.json():
             return
@@ -37,15 +37,45 @@ class FlightSearch:
             departure_time = str(self.flight_info[0]["utc_arrival"]).split("T")
             departure_time[1] = departure_time[1].replace("Z", "")
 
-            print("City From: " + self.flight_info[0]["cityFrom"] + " - " + self.flight_info[0]["countryFrom"]["name"])
-            print("City To: " + self.flight_info[0]["cityTo"] + " - " + self.flight_info[0]["countryTo"]["name"])
+            data.append(self.flight_info[0]["cityFrom"])
+            data.append(self.flight_info[0]["countryFrom"]["name"])
 
-            print("Utc Arrival Time: " + departure_time[0] + " " + departure_time[1])
-            print("Utc Departure Time: " + arrival_time[0] + " " + arrival_time[1])
+            data.append(self.flight_info[0]["cityTo"])
+            data.append(self.flight_info[0]["countryTo"]["name"])
 
-            print("Price: " + str(self.flight_info[0]["price"]) + " EUR")
-            print("-------------------------------------------")
+            data.append(departure_time[0])
+            data.append(departure_time[1])
+
+            data.append(arrival_time[0])
+            data.append(arrival_time[1])
+            data.append(str(self.flight_info[0]["price"]))
+
+            # print("City From: " + self.flight_info[0]["cityFrom"] + " - " + self.flight_info[0]["countryFrom"]["name"])
+            # print("City To: " + self.flight_info[0]["cityTo"] + " - " + self.flight_info[0]["countryTo"]["name"])
+            #
+            # print("Utc Departure Time: " + departure_time[0] + " " + departure_time[1])
+            # print("Utc Arrival Time: " + arrival_time[0] + " " + arrival_time[1])
+            #
+            # print("Price: " + str(self.flight_info[0]["price"]) + " EUR")
+            # print("-------------------------------------------")
+            try:
+                with smtplib.SMTP("smtp.gmail.com") as connection:
+                    connection.starttls()
+                    connection.login(user=os.environ["EMAIL"], password=os.environ["PASS"])
+                    connection.sendmail(
+                        from_addr=os.environ["EMAIL"],
+                        to_addrs=os.environ["EMAIL"],
+                        msg=f"Subject:Flight Alert for you\n\nCity From: {data[0]} - {data[1]}\nCity To: {data[2]} -"
+                            f" {data[3]}\nUtc Departure time: {data[4]} - {data[5]}\nUtc Arrival time: {data[6]} -"
+                            f" {data[7]}\nPrice: {data[8]}"
+                    )
+            except NameError:
+                print("Check Variables exit in SMTPInfo.py.")
+
+            except smtplib.SMTPAuthenticationError:
+                print("Authentication Error: check your credentials.")
+
         except KeyError:
-            pass
+            return False
         except IndexError:
-            pass
+            return False
