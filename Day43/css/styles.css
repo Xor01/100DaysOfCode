@@ -1,12 +1,12 @@
 body
 {
-    background-color: #5F8D4E;
+    background-color: #65647C;
+    color: white;
 }
 hr
 {
     border-style: dotted none none none;
-    background-color: #5F8D4E;
-    color: white;
+    color: gray;
     border-width: 10px;
     width: 10%;
 }
@@ -14,4 +14,23 @@ hr
 h1, h3
 {
     color: #66BFBF;
+}
+.link:hover
+{
+    color: #C539B4;
+}
+a:visited
+{
+    color: #DC3535;
+    font-size:large;
+}
+img:hover
+{
+    border-radius: 30%;
+}
+
+.profile-img{
+/*    padding: 10px;
+    background-color: red;*/
+    border-radius: 100%;
 }
