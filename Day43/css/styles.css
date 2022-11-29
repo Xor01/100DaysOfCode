@@ -10,3 +10,8 @@ hr
     border-width: 10px;
     width: 10%;
 }
+
+h1, h3
+{
+    color: #66BFBF;
+}
