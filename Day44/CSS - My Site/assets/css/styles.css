@@ -154,8 +154,8 @@ h1, p
   background-image: -ms-linear-gradient(top, #11cdd4, #1199e);
   background-image: -o-linear-gradient(top, #11cdd4, #1199e);
   background-image: linear-gradient(to bottom, #11cdd4, #1199e);
-  -webkit-border-radius: 8;
-  -moz-border-radius: 8;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
   border-radius: 8px;
   font-family: 'Montserrat', sans-serif;
   color: #ffffff;
