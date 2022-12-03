@@ -1,10 +1,14 @@
 from bs4 import BeautifulSoup
 from requests import get
+import spotipy
+from spotipy.oauth2 import SpotifyClientCredentials, SpotifyOAuth
+from os import environ
 
-user_date = input("Which Date you want to travel to ? YYYY-MM-DD: ")
-response = get(url=f"https://www.billboard.com/charts/hot-100/{user_date}/")
-soup = BeautifulSoup(response.content, "html.parser")
+url = "https://api.spotify.com/"
 
-songs_list = soup.select(selector="li h3", id="title-of-a-story")
-songs_list = [song.text.replace("\n", "").replace("\t", "") for song in songs_list]
-print(songs_list)
+params = {
+    "ids": ["https://open.spotify.com/track/3WY0iazRPHOlIq6CdbKLZ6?si=762a499a1b494d0b"]
+}
+
+res = get(url=url, params=params)
+print(res)

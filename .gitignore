@@ -1,3 +1,5 @@
 /SMTPInfo.py
 *.pyc
 /APIS.py
+*.cache
+
