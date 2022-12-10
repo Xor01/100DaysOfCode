@@ -57,9 +57,11 @@ def send_email(product_details, product_url):
 
 def main():
     url = input("Enter Product URL: ")
+    low_price = float(input("Enter a price to to send when product's lower is lower: "))
     product_details = get_price(url, headers)
-    if product_details[1]:
-        send_email(product_details, url)
+    if product_details[1] and product_details[1] < low_price:
+        # send_email(product_details, url)
+        print("Yes")
 
 
 if __name__ == '__main__':
