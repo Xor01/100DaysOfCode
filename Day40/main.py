@@ -35,17 +35,17 @@ for destination_code in destinations:
         from_time=tomorrow,
         to_time=six_month_from_today
     )
-    print(flight.price)
+    print(flight.price_whole)
     if flight is None:
         continue
 
-    if flight.price < destinations[destination_code]["price"]:
+    if flight.price_whole < destinations[destination_code]["price"]:
 
         users = data_manager.get_customer_emails()
         emails = [row["email"] for row in users]
         names = [row["firstName"] for row in users]
 
-        message = f"Low price alert! Only £{flight.price} to fly from {flight.origin_city}-{flight.origin_airport} to {flight.destination_city}-{flight.destination_airport}, from {flight.out_date} to {flight.return_date}. "
+        message = f"Low price alert! Only £{flight.price_whole} to fly from {flight.origin_city}-{flight.origin_airport} to {flight.destination_city}-{flight.destination_airport}, from {flight.out_date} to {flight.return_date}. "
 
         if flight.stop_overs > 0:
             message += f"\nFlight has {flight.stop_overs} stop over, via {flight.via_city}."
