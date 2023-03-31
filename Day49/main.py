@@ -37,14 +37,13 @@ driver.find_element(By.XPATH, '//*[@id="main"]/div/section[2]/div/div[2]/div[1]/
 
 sleep(5)
 
-all_listings = driver.find_elements(By.CSS_SELECTOR, ".job-card-container--clickable")
+jobs_list = driver.find_elements(By.CSS_SELECTOR, ".job-card-container--clickable")
 
-for listing in all_listings:
-    print("called")
-    listing.click()
+for job in jobs_list:
+    job.click()
     sleep(2)
     try:
-        listing.find_element(By.LINK_TEXT, "Save").click()
+        job.find_element(By.LINK_TEXT, "Save").click()
         sleep(5)
     except (Exception):
         pass
