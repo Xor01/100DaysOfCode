@@ -51,11 +51,11 @@ class InternetSpeedTwitterBot:
                                                     'div.result-item-container.result-item-container-align-left > div '
                                                     '> div.result-data.u-align-left > span').text
             print(f"Download speed: {download_speed}, Upload Speed: {upload_speed}")
-            if (int(download_speed) < self.DOWN) or (int(upload_speed) < self.UP):
+            if (float(download_speed) < self.DOWN) or (float(upload_speed) < self.UP):
                 self.tweet_at_provider(f"why my internet speed is not as our contract"
                                        f" ? {download_speed}down, {upload_speed}up not {self.DOWN} down, {self.UP} up")
         except Exception:
-            print("Sorry we could not get your internet speed")
+            print("----- We could not get your internet speed ------")
 
     def tweet_at_provider(self, message):
         try:
@@ -109,9 +109,8 @@ class InternetSpeedTwitterBot:
             print("-------- Your Complaint has been sent -----------")
             sleep(5)
             self.driver.quit()
-
         except Exception:
-            print("----- Something wrong happened we could not send your complaint -----")
+            print("----- Sorry the tweet could not be sent ------")
 
 
 bot = InternetSpeedTwitterBot()
