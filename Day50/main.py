@@ -107,7 +107,7 @@ class InternetSpeedTwitterBot:
                                                '3]/div/div/div[2]/div['
                                                '4]').click()
             print("-------- Your Complaint has been sent -----------")
-            sleep(5)
+            sleep(3)
             self.driver.quit()
         except Exception:
             print("----- Sorry the tweet could not be sent ------")
