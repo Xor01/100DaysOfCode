@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&family=Source+Sans+Pro:wght@300&display=swap');
+
+body {
+    background-color: black;
+}
+
+
+h1 {
+    text-transform: uppercase;
+    color: white;
+    font-size: 3rem;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+
+.container {
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 100px;
+    text-align: center;
+    color: white;
+    font-family: 'Fira Code', monospace;
+    font-size: 1.5rem;
+}
+
+.picture {
+    width: 100%;
+    border: 5px solid white;
+}
