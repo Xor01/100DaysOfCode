@@ -1,0 +1,1 @@
+## https://github.com/Xor01/day-71-college-major-vs-salary
