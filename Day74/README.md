@@ -1,0 +1,1 @@
+## https://github.com/Xor01/GoogleTrends-TimeSeries-Analysis
