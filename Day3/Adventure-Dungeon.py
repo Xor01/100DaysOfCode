@@ -1,3 +1,4 @@
+# Adventure Dungeon
 print('''
  _________________________________________________________
  /|     -_-                                             _-  |\
@@ -49,19 +50,19 @@ print('''
             `'
 ''')
 print("Welcome to DUNGEON.")
-print("Your mission is to find the treasure.") 
+print("Your mission is to find the treasure.")
 
-enter = input("Would you like to enter the dangeon or go back ? \"y\" or \"n\" ")
+enter = input("Would you like to enter the dungeon or go back ? \"y\" or \"n\" ")
 
-if  (enter.lower() == 'y' ):
-    go_to_room = int(input("You see two rooms in front of you which one to enter ? '1'or '2' " ))
-    
+if enter.lower() == 'y':
+    go_to_room = int(input("You see two rooms in front of you which one to enter ? '1'or '2' "))
+
     if go_to_room == 1:
         print("You won there it is the treasure")
-    
+
     elif go_to_room == 2:
         print("A monster in this room and the door is closed GG !")
-    
+
     else:
         print("Wrong choice!")
 
