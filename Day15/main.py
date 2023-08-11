@@ -1,3 +1,4 @@
+# Coffee Machine
 MENU = {
     "espresso": {
         "ingredients": {
