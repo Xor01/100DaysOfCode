@@ -1,3 +1,4 @@
+# Drawing a square of random colors with turtle
 import turtle as turtle_module
 import random
 
