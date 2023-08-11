@@ -1,3 +1,4 @@
+# Turtle race betting
 import turtle
 from random import randint
 
@@ -33,4 +34,3 @@ if user_guess == winner_color:
 else:
     print(f"You've lost the {winner_color} turtle is the winner.")
 screen.exitonclick()
-
