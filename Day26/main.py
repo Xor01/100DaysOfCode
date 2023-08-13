@@ -12,7 +12,7 @@ def generate():
     user_inp = input("Enter a word or a sentence: ").upper()
 
     try:
-        nato_alpha = [letter_list[letter] for letter in user_inp ]
+        nato_alpha = [letter_list[letter] for letter in user_inp]
     except KeyError:
         print("Only English letters are allowed")
         generate()
