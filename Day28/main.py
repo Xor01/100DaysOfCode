@@ -1,3 +1,4 @@
+# Pomodoro Clock GUI
 import math
 from tkinter import *
 from PIL import ImageTk, Image
