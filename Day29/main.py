@@ -1,4 +1,4 @@
-# Password Manager GUI
+# Password Manager GUI in TXT File
 from tkinter import *
 from tkinter import messagebox
 from PIL import ImageTk, Image
