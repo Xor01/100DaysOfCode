@@ -1,4 +1,4 @@
-# Password Manager
+# Password Manager GUI in JSON File
 from tkinter import *
 from tkinter import messagebox
 from PIL import ImageTk, Image
