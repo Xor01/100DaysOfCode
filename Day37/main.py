@@ -1,26 +1,26 @@
 # Habit Tracker using Pixela
-import requests
-import datetime
-import os
+from requests import post, put, delete
+from datetime import datetime
+from os import environ
 
 USERNAME = "xor01"
 PIXELA_ENDPOINT = "https://pixe.la/v1/users"
 graph_endpoint = f"{PIXELA_ENDPOINT}/{USERNAME}/graphs"
 PIXELA_PIXL_API = f"{PIXELA_ENDPOINT}/{USERNAME}/graphs/g1"
-TODAY_DATE = datetime.datetime.today().strftime("%Y%m%d")
+TODAY_DATE = datetime.today().strftime("%Y%m%d")
 HEADERS = {
-        "X-USER-TOKEN": os.environ["PIXELA_TOKEN"]
+        "X-USER-TOKEN": environ["PIXELA_TOKEN"]
     }
 
 
 def create_account():
     create_account_json = {
-        "token": os.environ["PIXELA_TOKEN"],
+        "token": environ["PIXELA_TOKEN"],
         "username": USERNAME,
         "agreeTermsOfService": "yes",
         "notMinor": "yes",
     }
-    account_creat_response = requests.post(url=PIXELA_ENDPOINT, json=create_account_json)
+    account_creat_response = post(url=PIXELA_ENDPOINT, json=create_account_json)
     print(account_creat_response.text)
 
 
@@ -33,7 +33,7 @@ def create_graph(graph_id, graph_name, uint, data_type, color):
         "color": color,
     }
 
-    creat_graph_response = requests.put(url=graph_endpoint, json=graph_config, headers=HEADERS)
+    creat_graph_response = put(url=graph_endpoint, json=graph_config, headers=HEADERS)
     print(creat_graph_response.text)
 
 
@@ -42,7 +42,7 @@ def add_pixl(quantity):
         "date": TODAY_DATE,
         "quantity": quantity,
     }
-    response = requests.post(url=PIXELA_PIXL_API, json=pixl_json, headers=HEADERS)
+    response = post(url=PIXELA_PIXL_API, json=pixl_json, headers=HEADERS)
     print(response.text)
 
 
@@ -53,11 +53,11 @@ def update_pixl(graph_id, date, quantity):
     update_json = {
         "quantity": str(quantity)
     }
-    update_response = requests.put(url=update_endpoint, json=update_json, headers=HEADERS)
+    update_response = put(url=update_endpoint, json=update_json, headers=HEADERS)
     print(update_response.text)
 
 
 def delete_pixl(graph_id, date):
     delete_endpoint = f"{PIXELA_ENDPOINT}/{USERNAME}/graphs/{graph_id}/{date}"
-    delete_response = requests.delete(url=delete_endpoint, headers=HEADERS)
+    delete_response = delete(url=delete_endpoint, headers=HEADERS)
     print(delete_response.text)
