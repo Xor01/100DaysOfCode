@@ -1,3 +1,4 @@
+# Trivial Quiz Game OOP GUI data from API
 from question_model import Question
 from data import question_data
 from ui import *
