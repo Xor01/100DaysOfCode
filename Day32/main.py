@@ -1,16 +1,16 @@
 # Birthday wisher
 import smtplib
 import datetime as dt
-from SMTPInfo import *
+from os import getenv
 import random
 import pandas
 
 
 ##################### Extra Hard Starting Project ######################
 
-# 1. Update the birthdays.csv :Done
+# 1. Update the birthdays.csv: Done
 
-# 2. Check if today matches a birthday in the birthdays.csv :Done
+# 2. Check if today matches a birthday in the birthdays.csv: Done
 def get_birthday():
     try:
         data = pandas.read_csv("birthdays.csv")
@@ -25,7 +25,7 @@ def get_birthday():
 
 
 # 3. If step 2 is true, pick a random letter from letter templates and replace the [NAME] with the person's actual
-# name from birthdays.csv :Done
+# name from birthdays.csv: Done
 def pick_rand_template(name):
     template_num = random.randint(1, 3)
     try:
@@ -38,14 +38,14 @@ def pick_rand_template(name):
         print(f"Templates with name letter_templates/letter_{template_num}.txt was not found.")
 
 
-# 4. Send the letter generated in step 3 to that person's email address. :Done
+# 4. Send the letter generated in step 3 to that person's email address. Done
 def send_birthday_wish(msg):
     try:
         with smtplib.SMTP("smtp.gmail.com") as connection:
             connection.starttls()
-            connection.login(user=EMAIL, password=PASSWORD)
+            connection.login(user=getenv('EMAIL'), password=getenv('PASSWORD'))
             connection.sendmail(
-                from_addr=EMAIL,
+                from_addr=getenv('EMAIL'),
                 to_addrs="tomesoh800@dicopto.com",
                 msg=f"Subject: Happy Birthday\n\n{msg}"
             )
