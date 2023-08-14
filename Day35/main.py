@@ -1,4 +1,5 @@
-from APIS import *
+# Rain alert
+from os import getenv
 import os
 import requests
 from twilio.rest import Client
@@ -7,8 +8,8 @@ from twilio.http.http_client import TwilioHttpClient
 END_POINT = "https://api.openweathermap.org/data/2.5/onecall"
 
 params = {
-    "lat": LAT,
-    "lon": LON,
+    "lat": getenv('LAT'),
+    "lon": getenv('LON'),
     "APPID": os.environ.get("OPEN_WEATHER_API"),
     "exclude": "daily,minutely,current",
 
@@ -29,7 +30,7 @@ if will_rain:
     proxy_client = TwilioHttpClient()
     proxy_client.session.proxies = {'https': os.environ['https_proxy']}
 
-    client = Client(account_sid, auth_token, http_client=proxy_client)
+    client = Client(getenv('account_sid'), getenv('auth_token'), http_client=proxy_client)
     message = client.messages \
         .create(body="It's going to rain today. Remember to bring an ☔️", from_="YOUR TWILIO VIRTUAL NUMBER",
                 to="YOUR TWILIO VERIFIED REAL NUMBER")
