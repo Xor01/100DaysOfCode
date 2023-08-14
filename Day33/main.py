@@ -3,7 +3,7 @@ import requests
 from datetime import datetime
 from time import sleep
 import smtplib
-from SMTPInfo import *
+from os import getenv
 MY_LAT = 41.5707  # Your latitude
 MY_LONG = -152.5490  # Your longitude
 
@@ -16,7 +16,7 @@ def is_it_dark():
     return my_hour >= sunset and my_hour >= sunrise
 
 
-iss_response = requests.get(url="http://api.open-notify.org/iss-now.json")
+iss_response = requests.get(url="https://api.open-notify.org/iss-now.json")
 iss_response.raise_for_status()
 iss_data = iss_response.json()
 
@@ -44,9 +44,9 @@ while True:
         try:
             with smtplib.SMTP("smtp.gmail.com") as connection:
                 connection.starttls()
-                connection.login(user=EMAIL, password=PASSWORD)
+                connection.login(user=getenv('EMAIL'), password=getenv('PASSWORD'))
                 connection.sendmail(
-                    from_addr=EMAIL,
+                    from_addr=getenv('EMAIL'),
                     to_addrs="tomesoh800@dicopto.com",
                     msg="Subject: Look UP\n\nISS Is above you."
                 )
