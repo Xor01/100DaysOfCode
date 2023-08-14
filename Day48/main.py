@@ -1,3 +1,4 @@
+# Cookies Eating Game
 import random
 
 from selenium import webdriver
